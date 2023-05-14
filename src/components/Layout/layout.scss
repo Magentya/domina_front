@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  & > button {
+    width: 4rem;
+    height: 2.2rem;
+    border: 1px;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+}
