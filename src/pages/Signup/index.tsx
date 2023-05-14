@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import '../CreateTask/createTask.scss'
+import { toast } from 'react-toastify';
 
 export const Signup = () => {
 
@@ -14,20 +15,22 @@ export const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('submit')
+    try {
+      // Send the values to the backend
+      const { data } = await axios.post('http://localhost:3000/api/user/create', {
+        username,
+        mail,
+        password,
+      })
 
-    // Send the values to the backend
-    const { data } = await axios.post('http://localhost:3000/api/user/create', {
-      username,
-      mail,
-      password,
-    })
-
-    console.log(data);
-
-    if (data.status === 201) {
-      navigate('/login')
+      if (data.status === 201) {
+        navigate('/login')
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Correo o usuario ya existente')
     }
+
 
   }
 

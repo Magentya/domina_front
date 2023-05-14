@@ -11,6 +11,12 @@ export const Home = () => {
 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user_id')
+    navigate('/login')
+  }
+
   useEffect(() => {
     axios.get('http://localhost:3001/api/task/' + localStorage.getItem('user_id'), {
       headers: {
@@ -33,17 +39,26 @@ export const Home = () => {
   }, [navigate])
 
   return (
-    <section>
-      {
-        data &&
-        data.map((task: ITask) => (
-          <Task key={task.id} {...task} />
-        ))
-      }
-      {
-        data.length === 0 &&
-        <h1>No hay tareas</h1>
-      }
-    </section>
+    <>
+      <section>
+        {
+          data &&
+          data.map((task: ITask) => (
+            <Task key={task.id} {...task} />
+          ))
+        }
+        {
+          data.length === 0 &&
+          <h1>No hay tareas</h1>
+        }
+      </section>
+      <button
+        className='close-session'
+        style={{ width: 100, height: 50, }}
+        onClick={handleLogout}
+      >
+          cerrar sesión
+        </button>
+    </>
   )
 }
