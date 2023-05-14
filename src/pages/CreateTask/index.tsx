@@ -13,7 +13,6 @@ export const CreateTask = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('submit')
 
     // Send the values to the backend
     const { data } = await axios.post('http://localhost:3001/api/task/create', {
