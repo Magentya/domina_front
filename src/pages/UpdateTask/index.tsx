@@ -12,11 +12,8 @@ export const UpdateTask = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  console.log(location.state);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('submit')
 
     // Send the values to the backend
     const { data } = await axios.put('http://localhost:3001/api/task/'+location.state.id, {

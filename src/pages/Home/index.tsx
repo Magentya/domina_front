@@ -24,11 +24,7 @@ export const Home = () => {
       }
     }).then((response) => {
       setData(response.data.data)
-    }
-    ).catch((error) => {
-      console.log(error)
-    }
-    )
+    })
   }, [])
 
   useEffect(() => {

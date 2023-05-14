@@ -27,7 +27,6 @@ export const Signup = () => {
         navigate('/login')
       }
     } catch (error) {
-      console.log(error);
       toast.error('Correo o usuario ya existente')
     }
 
