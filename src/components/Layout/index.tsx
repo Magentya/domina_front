@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import './Layout.scss';
 
-export const Layout = ({ children }: { children: never }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Layout = ({ children }: { children: any }) => {
   const navigate = useNavigate();
 
   return (
